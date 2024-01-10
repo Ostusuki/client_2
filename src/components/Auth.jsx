@@ -4,10 +4,31 @@ import axios from "axios";
 
 import signInImage from "../assets/signup.jpg";
 
+const initialState = {
+    fullName: '',
+    userName: '',
+    password: '',
+    confirmPassword: '',
+    phoneNumber: '',
+    avatarURL: '',
+}
+
 const Auth = () => {
 
+    const [form, setForm] = useState(initialState);
     const [isSignUp, setIsSignUp] = useState(true);
-    const handleChange = () => {}
+    const handleChange = (e) => {
+        setForm({...form, [e.target.name]: e.target.value});
+        
+        console.log(form);
+    }
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+        
+    //     console.log(form);
+    // }
+
     const switchMode = () => {
         setIsSignUp((prevIsSignUp) => !prevIsSignUp);
     }
@@ -99,6 +120,9 @@ const Auth = () => {
                         </p>
                     </div>
                 </div>
+            </div>
+            <div className="auth__form-container_image">
+                <img src={signInImage} alt="sign in" />
             </div>
         </div>
     );
