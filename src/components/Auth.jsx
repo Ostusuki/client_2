@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import Cookie from "universal-cookie";
+import Cookies from "universal-cookie";
 import axios from "axios";
 
 import signInImage from "../assets/signup.jpg";
+
+const cookies = new Cookies();
 
 const initialState = {
     fullName: '',
@@ -18,13 +20,33 @@ const Auth = () => {
     const [form, setForm] = useState(initialState);
     const [isSignUp, setIsSignUp] = useState(true);
     const handleChange = (e) => {
-        setForm({...form, [e.target.name]: e.target.value});
+        setForm({ ...form, [e.target.name]: e.target.value });
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        
-        console.log(form);
+
+        const { fullName, userName, password, phoneNumber, avatarURL } = form;
+        const URL = 'http://localhost:5000/auth';
+
+        const { data: { token, userId, hashedPassword } } = await axios
+            .post(
+                `${URL}/${isSignUp ? 'signup' : 'login'}`
+                , { userName, password, fullName, phoneNumber, avatarURL,}
+            );
+
+            cookies.set('token', token)
+                  .set('userName', userName)
+                  .set('fullName', fullName)
+                  .set('userId', userId);
+
+            if(isSignUp) {
+                cookies.set('phoneNumber', phoneNumber)
+                      .set('avatarURL', avatarURL)
+                      .set('hashedPassword', hashedPassword);
+            }
+
+            window.location.reload();    
     }
 
     const switchMode = () => {
@@ -116,7 +138,7 @@ const Auth = () => {
                                 : "Don't have an account "
                             }
                             <span onClick={switchMode}>
-                                {isSignUp ? 'Sign In' : 'Sign Up'} 
+                                {isSignUp ? 'Sign In' : 'Sign Up'}
                             </span>
                         </p>
                     </div>
