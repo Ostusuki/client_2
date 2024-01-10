@@ -5,9 +5,12 @@ import axios from "axios";
 import signInImage from "../assets/signup.jpg";
 
 const Auth = () => {
-    const [isSignUp, setIsSignUp] = useState(true);
 
-    const handleChange = () => { }
+    const [isSignUp, setIsSignUp] = useState(true);
+    const handleChange = () => {}
+    const switchMode = () => {
+        setIsSignUp((prevIsSignUp) => !prevIsSignUp);
+    }
 
     return (
         <div className="auth__form-container">
@@ -84,6 +87,17 @@ const Auth = () => {
                             </div>
                         )}
                     </form>
+                    <div className="auth__form-container_fields-account">
+                        <p>
+                            {isSignUp
+                                ? "Already have an account? "
+                                : "Don't have an account "
+                            }
+                            <span onClick={switchMode}>
+                                {isSignUp ? 'Sign In' : 'Sign Up'} 
+                            </span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
