@@ -35,15 +35,15 @@ const Auth = () => {
                 , { userName, password, fullName, phoneNumber, avatarURL,}
             );
 
-            cookies.set('token', token)
-                  .set('userName', userName)
-                  .set('fullName', fullName)
-                  .set('userId', userId);
+            cookies.set('token', token);
+            cookies.set('userName', userName);
+            cookies.set('fullName', fullName);
+            cookies.set('userId', userId);
 
             if(isSignUp) {
-                cookies.set('phoneNumber', phoneNumber)
-                      .set('avatarURL', avatarURL)
-                      .set('hashedPassword', hashedPassword);
+                cookies.set('phoneNumber', phoneNumber);
+                cookies.set('avatarURL', avatarURL);
+                cookies.set('hashedPassword', hashedPassword);
             }
 
             window.location.reload();    
@@ -151,4 +151,4 @@ const Auth = () => {
     );
 }
 
-export default Auth;
+export default Auth
