@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import Cookies from "universal-cookie";
-import axios from "axios";
+import React, { useState } from 'react';
+import Cookies from 'universal-cookie';
+import axios from 'axios';
 
-import signInImage from "../assets/signup.jpg";
+import signInImage from '../assets/signup.jpg';
 
 const cookies = new Cookies();
 
@@ -95,7 +95,7 @@ const Auth = () => {
                         )}
                         {isSignUp && (
                             <div className="auth__form-container_fields-content_input">
-                                <label htmlFor="fullName">Avatar Url</label>
+                                <label htmlFor="avatarURL">Avatar Url</label>
                                 <input
                                     name="avatarURL"
                                     type="text"

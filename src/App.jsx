@@ -8,6 +8,7 @@ import 'stream-chat-react/dist/css/index.css';
 import './App.css';
 
 const cookies = new Cookies();
+//const apiKey = 'qgtk9ttyha7j';
 const apiKey = 'fa7hxad44qn7';
 //const apiKey = 'bydbun9x9q6b';
 const authToken = cookies.get("token");
@@ -19,7 +20,7 @@ if (authToken) {
     name: cookies.get('userName'),
     fullName: cookies.get('fullName'),
     image: cookies.get('avatarURL'),
-    hashPassword: cookies.get('hashedPassword'),
+    hashedPassword: cookies.get('hashedPassword'),
     phoneNumber: cookies.get('phoneNumber'),
   }, authToken)
 }
