@@ -58,7 +58,6 @@ const ChannelListContainer = ({ isCreating, setIsCreating, setCreateType, setIsE
               setIsCreating={setIsCreating}
               setCreateType={setCreateType} 
               setIsEditing={setIsEditing}
-              setToggleContainer={setToggleContainer}
             />
           )}
           Preview={(previewProps) => (
@@ -79,7 +78,7 @@ const ChannelListContainer = ({ isCreating, setIsCreating, setCreateType, setIsE
               setIsCreating={setIsCreating}
               setCreateType={setCreateType} 
               setIsEditing={setIsEditing}
-              setToggleContainer={setToggleContainer}
+
             />
           )}
           Preview={(previewProps) => (
